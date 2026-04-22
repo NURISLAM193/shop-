@@ -4,145 +4,166 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>Klothink Fashion Store</title>
-  
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
   <link rel="stylesheet" href="/output.css">
-
 </head>
 <body class="font-sans text-gray-600 antialiased bg-white selection:bg-yellow-400 selection:text-gray-950">
 
-
+  <!-- Top Banner -->
   <div class="bg-gray-950 text-white text-sm py-2 px-4 flex justify-center items-center gap-2" data-purpose="top-banner">
     <span>Subscribe to our Newsletter For Latest Collections</span>
-    <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-70"></i>
+    <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-70 ml-1"></i>
   </div>
-  
-  <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm py-4 px-6 md:px-12 flex items-center justify-between border-b border-gray-200" data-purpose="main-nav">
-    
-    <div class="hidden md:flex items-center gap-2">
-      <a class="px-5 py-2.5 rounded-full bg-gray-50 text-gray-900 font-bold text-sm hover:bg-gray-100 transition-colors" href="#">Home</a>
-      <a class="px-5 py-2.5 rounded-full text-gray-600 font-bold text-sm hover:bg-gray-50 transition-colors" href="#">Products</a>
-    </div>
 
-   
-    <button class="md:hidden text-gray-900 p-2">
-      <i class="fa-solid fa-bars text-xl"></i>
-    </button>
-
-   
-    <a class="flex items-center gap-2" data-purpose="brand-logo" href="#">
-      <img alt="Klothink Logo" class="h-8 w-auto" src="./images/Group.png"/>
-    </a>
-
-   
-    <div class="flex items-center gap-3">
-      <button aria-label="Cart" class="w-10 h-10 rounded-full bg-yellow-400 flex items-center justify-center text-gray-950 hover:bg-yellow-300 transition-colors relative">
-        <i class="fa-solid fa-cart-shopping"></i>
+  <!-- Navigation — same container as hero -->
+  <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100" data-purpose="main-nav">
+    <div class="max-w-7xl mx-auto px-12 py-4 flex items-center justify-between">
+      <!-- Left: nav links -->
+      <div class="hidden md:flex items-center gap-2">
+        <a class="px-5 py-2.5 rounded-full bg-gray-100 text-gray-900 font-bold text-sm hover:bg-gray-200 transition-colors" href="#">Home</a>
+        <a class="px-5 py-2.5 rounded-full text-gray-600 font-bold text-sm hover:bg-gray-50 transition-colors" href="#">Products</a>
+      </div>
+      <button class="md:hidden text-gray-900 p-2">
+        <i class="fa-solid fa-bars text-xl"></i>
       </button>
-      <a class="hidden md:flex px-6 py-2.5 rounded-full border border-gray-200 text-gray-900 font-bold text-sm hover:bg-gray-50 transition-colors" href="#">Contact Support</a>
+      <!-- Center: Logo -->
+      <a class="flex items-center" data-purpose="brand-logo" href="#">
+        <img alt="Klothink Logo" class="h-8 w-auto" src="./images/Group.png"/>
+      </a>
+      <!-- Right: Cart + Contact Support -->
+      <div class="flex items-center gap-3">
+        <button aria-label="Cart" class="w-10 h-10 rounded-full bg-yellow-400 flex items-center justify-center text-gray-950 hover:bg-yellow-300 transition-colors">
+          <i class="fa-solid fa-cart-shopping text-sm"></i>
+        </button>
+        <a class="hidden md:flex px-6 py-2.5 rounded-full border border-gray-200 text-gray-900 font-bold text-sm hover:bg-gray-50 transition-colors" href="#">Contact Support</a>
+      </div>
     </div>
   </nav>
- 
+
+  <!-- Hero — same container as nav -->
   <main>
-    <section class="py-12 md:py-20 px-6 md:px-12 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16" data-purpose="hero-section">
-      
-    
-      <div class="flex-1 space-y-10 w-full" data-purpose="hero-content">
-        <div class="space-y-6 relative">
-          <h1 class="text-4xl md:text-5xl lg:text-[38px] font-medium text-gray-900 tracking-tight">
-            ELEVATE YOUR STYLE WITH KLOTHINK
-          </h1>
-          <p class="text-gray-600 leading-relaxed">
-            Explore a world of fashion at Klothink, where trends meet affordability. Immerse yourself in the latest styles and seize exclusive promotions.
-          </p>
-        </div>
+    <section data-purpose="hero-section">
+      <div class="max-w-7xl mx-auto px-12 py-16 md:py-20 flex flex-col lg:flex-row items-start gap-12 lg:gap-16">
 
-        <div class="flex items-center gap-4">
-          <button class="px-8 py-3.5 bg-yellow-400 text-gray-950 font-bold text-sm rounded-full flex items-center gap-2 hover:bg-yellow-300 transition-colors">
-            <i class="fa-solid fa-bag-shopping text-base"></i>
-            Shop Now
-          </button>
-          <button class="px-8 py-3.5 bg-white border border-gray-200 text-gray-900 font-bold text-sm rounded-full hover:bg-gray-50 transition-colors">
-            Contact Us
-          </button>
-        </div>
+        <!-- LEFT column — starts exactly under "Home" -->
+        <div class="flex-1 space-y-8 w-full" data-purpose="hero-content">
 
-    
-        <div class="grid grid-cols-2 gap-4 pt-4" data-purpose="hero-stats">
-  <div class="bg-gray-50 p-6 rounded-2xl">
-            <h3 class="text-2xl font-bold text-gray-900 mb-1">OVER 1000+</h3>
-            <p class="text-xs text-gray-600">Trendsetting Styles</p>
-      </div>
-          <div class="bg-gray-50 p-6 rounded-2xl">
-            <h3 class="text-2xl font-bold text-gray-900 mb-1">99%</h3>
-   <p class="text-xs text-gray-600">Customer Satisfaction Rate</p>
-       </div>
-          <div class="bg-gray-50 p-6 rounded-2xl">
-      <h3 class="text-2xl font-bold text-gray-900 mb-1">24/7</h3>
-       <p class="text-xs text-gray-600">Shopping Convenience</p>
+          <div class="relative">
+            <!-- STYLE REDEFINED. label -->
+            <p class="hidden lg:block absolute -top-1 right-0 text-[10px] font-semibold tracking-[0.2em] text-gray-400 uppercase">
+              STYLE REDEFINED.
+            </p>
+            <h1 class="text-4xl md:text-[42px] font-extrabold text-gray-900 leading-tight tracking-tight">
+              ELEVATE YOUR STYLE WITH KLOTHINK
+            </h1>
+            <p class="mt-5 text-gray-500 text-[15px] leading-relaxed max-w-md">
+              Explore a world of fashion at Klothink, where trends meet affordability. Immerse yourself in the latest styles and seize exclusive promotions.
+            </p>
           </div>
-      <div class="bg-gray-50 p-6 rounded-2xl">
-        <h3 class="text-2xl font-bold text-gray-900 mb-1">30-DAY</h3>
-       <p class="text-xs text-gray-600">Hassle-Free Returns</p>
-     </div>
-        </div>
-      </div>
 
-      <div class="flex-1 w-full relative" data-purpose="hero-image">
-        <div class="bg-gray-50 rounded-[2rem] p-6 pb-16 relative overflow-hidden">
-          <div class="flex justify-between items-start mb-4 relative z-10">
-      <span class="px-4 py-1.5 bg-white rounded-full text-xs font-bold text-gray-900 shadow-sm">Best Seller</span>
-            <div class="flex gap-2">
-      <button class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-gray-600 shadow-sm hover:text-gray-900">
-        <i class="fa-solid fa-chevron-left text-xs"></i>
-     </button>
-       <button class="w-8 h-8 rounded-full bg-gray-950 flex items-center justify-center text-white shadow-sm hover:bg-black">
-        <i class="fa-solid fa-chevron-right text-xs"></i>
-     </button>
-       </div>
-   </div>
+          <!-- Buttons -->
+          <div class="flex items-center gap-4">
+            <button class="px-8 py-3.5 bg-yellow-400 text-gray-950 font-bold text-sm rounded-full flex items-center gap-2 hover:bg-yellow-300 transition-colors shadow-sm">
+              <i class="fa-solid fa-bag-shopping"></i>
+              Shop Now
+            </button>
+            <button class="px-8 py-3.5 bg-white border border-gray-200 text-gray-900 font-bold text-sm rounded-full hover:bg-gray-50 transition-colors">
+              Contact Us
+            </button>
+          </div>
 
-   <div class="relative z-10 flex justify-center mb-8 px-8">
-      <img alt="Yellow Casual Jacket" class="w-full max-w-[450px] h-auto object-contain drop-shadow-xl" src="./images/c4510a7f30bfac968bd533c80e6258f53e496b9b.png"/>
-      <div class="absolute top-[5%] right-[15%] px-3 py-1.5 bg-white rounded-full text-[10px] font-bold shadow-sm flex items-center gap-1.5">
-       <div class="w-1.5 h-1.5 rounded-full bg-yellow-400"></div> Hoodie
-       </div>
-            <div class="absolute bottom-[35%] right-[0%] px-3 py-1.5 bg-white rounded-full text-[10px] font-bold shadow-sm flex items-center gap-1.5">
-       <div class="w-1.5 h-1.5 rounded-full bg-yellow-400"></div> Full Sleeve
-      </div>
-            <div class="absolute top-[45%] left-[5%] px-3 py-1.5 bg-white rounded-full text-[10px] font-bold shadow-sm flex items-center gap-1.5">
-     <div class="w-1.5 h-1.5 rounded-full bg-yellow-400"></div> Casual Jacket
+          <!-- Stats grid -->
+          <div class="grid grid-cols-2 gap-3" data-purpose="hero-stats">
+            <div class="border border-gray-100 bg-white rounded-2xl p-6 shadow-sm">
+              <p class="text-[22px] font-extrabold text-gray-900 leading-tight">OVER 1000+</p>
+              <p class="text-xs text-gray-500 mt-1">Trendsetting Styles</p>
+            </div>
+            <div class="border border-gray-100 bg-white rounded-2xl p-6 shadow-sm">
+              <p class="text-[22px] font-extrabold text-gray-900 leading-tight">99%</p>
+              <p class="text-xs text-gray-500 mt-1">Customer Satisfaction Rate</p>
+            </div>
+            <div class="border border-gray-100 bg-white rounded-2xl p-6 shadow-sm">
+              <p class="text-[22px] font-extrabold text-gray-900 leading-tight">24/7</p>
+              <p class="text-xs text-gray-500 mt-1">Shopping Convenience</p>
+            </div>
+            <div class="border border-gray-100 bg-white rounded-2xl p-6 shadow-sm">
+              <p class="text-[22px] font-extrabold text-gray-900 leading-tight">30-DAY</p>
+              <p class="text-xs text-gray-500 mt-1">Hassle-Free Returns</p>
             </div>
           </div>
 
-          <div class="absolute bottom-6 left-6 right-6 flex items-center justify-between bg-white rounded-full p-2 pl-6 pr-2 shadow-sm z-10">
-            <div class="flex items-center gap-4">
-      <span class="text-xs font-bold text-gray-900">Color</span>
-              <div class="flex gap-1.5">
-  <button class="w-4 h-4 rounded-full bg-yellow-400 ring-2 ring-white ring-offset-1"></button>
-  <button class="w-4 h-4 rounded-full bg-blue-500"></button>
-<button class="w-4 h-4 rounded-full bg-gray-300"></button>
-</div>
-</div>
-<div class="flex items-center gap-3 border-l border-gray-200 pl-4">
-<span class="text-xs font-bold text-gray-900">Sizes</span>
-              <div class="flex gap-1">
-<button class="w-6 h-6 rounded-full text-[10px] font-bold text-gray-600 hover:bg-gray-50">S</button>
-<button class="w-6 h-6 rounded-full text-[10px] font-bold bg-gray-950 text-white">M</button>
-  <button class="w-6 h-6 rounded-full text-[10px] font-bold text-gray-600 hover:bg-gray-50">L</button>
-<button class="w-6 h-6 rounded-full text-[10px] font-bold text-gray-600 hover:bg-gray-50">XL</button>
-</div>
-</div>
-<a class="px-5 py-2.5 bg-gray-50 rounded-full text-xs font-bold text-gray-900 hover:bg-gray-100 transition-colors flex items-center gap-2" href="#">
-  View Similar <i class="fa-solid fa-arrow-right-long text-[10px]"></i>
-     </a>
- </div>
         </div>
+
+        <!-- RIGHT column — ends exactly under "Contact Support" -->
+        <div class="flex-1 w-full" data-purpose="hero-image">
+          <div class="bg-gray-50 rounded-3xl relative overflow-hidden" style="padding: 1.5rem 1.5rem 5.5rem;">
+
+            <!-- Card top row -->
+            <div class="flex justify-between items-center mb-1 relative z-10">
+              <span class="px-4 py-1.5 bg-white rounded-full text-xs font-bold text-gray-900 shadow-sm">Best Seller</span>
+              <div class="flex gap-2">
+                <button class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-gray-400 shadow-sm hover:text-gray-900 transition-colors">
+                  <i class="fa-solid fa-chevron-left text-xs"></i>
+                </button>
+                <button class="w-8 h-8 rounded-full bg-gray-950 flex items-center justify-center text-white shadow-sm hover:bg-black transition-colors">
+                  <i class="fa-solid fa-chevron-right text-xs"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Product image + floating labels -->
+            <div class="relative flex justify-center px-6 py-3">
+              <img
+                alt="Yellow Casual Jacket"
+                class="w-full max-w-[400px] h-auto object-contain"
+                src="./images/c4510a7f30bfac968bd533c80e6258f53e496b9b.png"
+              />
+              <!-- Hoodie label -->
+              <span class="absolute top-[4%] right-[12%] px-3 py-1.5 bg-white rounded-full text-[10px] font-semibold text-gray-800 shadow-md whitespace-nowrap">
+                Hoodie
+              </span>
+              <!-- Casual Jacket label -->
+              <span class="absolute top-[42%] left-[1%] px-3 py-1.5 bg-white rounded-full text-[10px] font-semibold text-gray-800 shadow-md whitespace-nowrap">
+                Casual Jacket
+              </span>
+              <!-- Full Sleeve label -->
+              <span class="absolute bottom-[22%] right-[1%] px-3 py-1.5 bg-white rounded-full text-[10px] font-semibold text-gray-800 shadow-md whitespace-nowrap flex items-center gap-1">
+                <svg width="7" height="12" viewBox="0 0 7 12" fill="none" class="text-gray-300 shrink-0">
+                  <path d="M3.5 1 C1 4 1 8 3.5 11" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                </svg>
+                Full Sleeve
+              </span>
+            </div>
+
+            <!-- Bottom control bar -->
+            <div class="absolute bottom-3 left-3 right-3 bg-white rounded-full flex items-center gap-2 px-5 py-2.5 shadow-md z-10">
+              <span class="text-xs font-bold text-gray-900 shrink-0">Color</span>
+              <div class="flex gap-1.5 items-center">
+                <button class="w-3.5 h-3.5 rounded-full bg-blue-400 hover:scale-110 transition-transform"></button>
+                <button class="w-3.5 h-3.5 rounded-full bg-yellow-400 hover:scale-110 transition-transform"></button>
+                <button class="w-3.5 h-3.5 rounded-full bg-amber-300 hover:scale-110 transition-transform"></button>
+              </div>
+              <div class="w-px h-4 bg-gray-200 mx-1 shrink-0"></div>
+              <span class="text-xs font-bold text-gray-900 shrink-0">Sizes</span>
+              <div class="flex gap-0.5">
+                <button class="w-6 h-6 rounded-full text-[10px] font-semibold text-gray-500 hover:bg-gray-100">S</button>
+                <button class="w-6 h-6 rounded-full text-[10px] font-semibold bg-gray-950 text-white">M</button>
+                <button class="w-6 h-6 rounded-full text-[10px] font-semibold text-gray-500 hover:bg-gray-100">L</button>
+                <button class="w-6 h-6 rounded-full text-[10px] font-semibold text-gray-500 hover:bg-gray-100">XL</button>
+              </div>
+              <div class="w-px h-4 bg-gray-200 mx-1 shrink-0"></div>
+              <a class="ml-auto text-xs font-bold text-gray-900 hover:text-yellow-500 transition-colors flex items-center gap-1 whitespace-nowrap" href="#">
+                View Similar <span class="text-sm">→</span>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
       </div>
     </section>
   </main>
-
 
 </body>
 </html>

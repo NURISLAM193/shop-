@@ -6,62 +6,67 @@
   <title>Klothink Fashion Store</title>
 
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <!-- Custom color tokens — matches output.css variables -->
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            primary:      '#FACC15', /* yellow-400 */
-            secondary:    '#030712', /* gray-950  */
-            headingColor: '#111827', /* gray-900  */
-            textColor:    '#4B5563', /* gray-600  */
-            lightBg:      '#F9FAFB', /* gray-50   */
-            borderColor:  '#F3F4F6', /* gray-100  */
+            primary:      '#FACC15',
+            secondary:    '#030712',
+            headingColor: '#111827',
+            textColor:    '#4B5563',
+            lightBg:      '#F9FAFB',
+            borderColor:  '#F3F4F6',
           }
         }
       }
     }
   </script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
-  <link rel="stylesheet" href="/output.css">
+  <link rel="stylesheet" href="./output.css">
+  <script src="./ui.js" defer></script>
 </head>
 <body class="font-sans text-gray-600 antialiased bg-white selection:bg-yellow-400 selection:text-gray-950">
-
-  <!-- Top Banner -->
   <div class="bg-gray-950 text-white text-sm py-2 px-4 flex justify-center items-center gap-2" data-purpose="top-banner">
     <span>Subscribe to our Newsletter For Latest Collections</span>
     <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-70 ml-1"></i>
   </div>
 
-  <!-- Navigation -->
   <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100" data-purpose="main-nav">
     <div class="max-w-7xl mx-auto px-12 py-4 flex items-center justify-between">
       <div class="hidden md:flex items-center gap-2">
-        <a class="px-5 py-2.5 rounded-full bg-gray-100 text-gray-900 font-bold text-sm hover:bg-gray-200 transition-colors" href="#">Home</a>
-        <a class="px-5 py-2.5 rounded-full text-gray-600 font-bold text-sm hover:bg-gray-50 transition-colors" href="#">Products</a>
+        <a class="pill-link is-active" href="#hero">Home</a>
+        <a class="pill-link" href="#products">Products</a>
       </div>
-      <button class="md:hidden text-gray-900 p-2">
+
+      <button id="mobile-menu-button" class="md:hidden text-gray-900 p-2 rounded-full border border-gray-200" aria-expanded="false" aria-controls="mobile-menu" type="button">
         <i class="fa-solid fa-bars text-xl"></i>
       </button>
-      <a class="flex items-center" data-purpose="brand-logo" href="#">
-        <img alt="Klothink Logo" class="h-8 w-auto" src="./images/Group.png"/>
+
+      <a class="flex items-center" data-purpose="brand-logo" href="#hero">
+        <img alt="Klothink Logo" class="h-8 w-auto" src="./images/Group.png">
       </a>
+
       <div class="flex items-center gap-3">
-        <button aria-label="Cart" class="w-10 h-10 rounded-full bg-yellow-400 flex items-center justify-center text-gray-950 hover:bg-yellow-300 transition-colors">
+        <button aria-label="Cart" class="w-10 h-10 rounded-full bg-yellow-400 flex items-center justify-center text-gray-950 hover:bg-yellow-300 transition-colors" type="button">
           <i class="fa-solid fa-cart-shopping text-sm"></i>
         </button>
         <a class="hidden md:flex px-6 py-2.5 rounded-full border border-gray-200 text-gray-900 font-bold text-sm hover:bg-gray-50 transition-colors" href="#">Contact Support</a>
       </div>
     </div>
+
+    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white">
+      <div class="px-5 py-4 flex flex-col gap-2 text-sm font-bold text-gray-900">
+        <a class="mobile-link" href="#hero">Home</a>
+        <a class="mobile-link" href="#products">Products</a>
+        <a class="mobile-link" href="#">Contact Support</a>
+      </div>
+    </div>
   </nav>
 
   <main>
-    <!-- Hero Section -->
-    <section data-purpose="hero-section">
+    <section id="hero" data-purpose="hero-section">
       <div class="max-w-7xl mx-auto px-12 py-16 md:py-20 flex flex-col lg:flex-row items-start gap-12 lg:gap-16">
-
-        <!-- LEFT -->
         <div class="flex-1 space-y-8 w-full" data-purpose="hero-content">
           <div class="relative">
             <p class="hidden lg:block absolute -top-1 right-0 text-[10px] font-semibold tracking-[0.2em] text-gray-400 uppercase">
@@ -76,11 +81,11 @@
           </div>
 
           <div class="flex items-center gap-4">
-            <button class="px-8 py-3.5 bg-yellow-400 text-gray-950 font-bold text-sm rounded-full flex items-center gap-2 hover:bg-yellow-300 transition-colors shadow-sm">
+            <button class="px-8 py-3.5 bg-yellow-400 text-gray-950 font-bold text-sm rounded-full flex items-center gap-2 hover:bg-yellow-300 transition-colors shadow-sm" type="button">
               <i class="fa-solid fa-bag-shopping"></i>
               Shop Now
             </button>
-            <button class="px-8 py-3.5 bg-white border border-gray-200 text-gray-900 font-bold text-sm rounded-full hover:bg-gray-50 transition-colors">
+            <button class="px-8 py-3.5 bg-white border border-gray-200 text-gray-900 font-bold text-sm rounded-full hover:bg-gray-50 transition-colors" type="button">
               Contact Us
             </button>
           </div>
@@ -105,43 +110,42 @@
           </div>
         </div>
 
-        <!-- RIGHT -->
         <div class="flex-1 w-full" data-purpose="hero-image">
           <div class="bg-gray-50 rounded-3xl relative overflow-hidden" style="padding: 1.5rem 1.5rem 5.5rem;">
             <div class="flex justify-between items-center mb-1 relative z-10">
-              <span class="px-4 py-1.5 bg-white rounded-full text-xs font-bold text-gray-900 shadow-sm">Best Seller</span>
+              <span id="hero-badge" class="px-4 py-1.5 bg-white rounded-full text-xs font-bold text-gray-900 shadow-sm">Best Seller</span>
               <div class="flex gap-2">
-                <button class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-gray-400 shadow-sm hover:text-gray-900 transition-colors">
+                <button id="hero-prev" class="hero-arrow" type="button" aria-label="Previous hero product">
                   <i class="fa-solid fa-chevron-left text-xs"></i>
                 </button>
-                <button class="w-8 h-8 rounded-full bg-gray-950 flex items-center justify-center text-white shadow-sm hover:bg-black transition-colors">
+                <button id="hero-next" class="hero-arrow hero-arrow-active" type="button" aria-label="Next hero product">
                   <i class="fa-solid fa-chevron-right text-xs"></i>
                 </button>
               </div>
             </div>
             <div class="relative flex justify-center px-6 py-3">
-              <img alt="Yellow Casual Jacket" class="w-full max-w-[400px] h-auto object-contain" src="./images/c4510a7f30bfac968bd533c80e6258f53e496b9b.png"/>
-              <span class="absolute top-[4%] right-[12%] px-3 py-1.5 bg-white rounded-full text-[10px] font-semibold text-gray-800 shadow-md whitespace-nowrap">Hoodie</span>
-              <span class="absolute top-[42%] left-[1%] px-3 py-1.5 bg-white rounded-full text-[10px] font-semibold text-gray-800 shadow-md whitespace-nowrap">Casual Jacket</span>
-              <span class="absolute bottom-[22%] right-[1%] px-3 py-1.5 bg-white rounded-full text-[10px] font-semibold text-gray-800 shadow-md whitespace-nowrap flex items-center gap-1">
-                <svg width="7" height="12" viewBox="0 0 7 12" fill="none" class="text-gray-300 shrink-0"><path d="M3.5 1 C1 4 1 8 3.5 11" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+              <img id="hero-image" alt="Yellow Casual Jacket" class="w-full max-w-[400px] h-auto object-contain" src="./images/c4510a7f30bfac968bd533c80e6258f53e496b9b.png">
+              <span id="hero-tag-1" class="hero-tag top-[4%] right-[12%]">Hoodie</span>
+              <span id="hero-tag-2" class="hero-tag top-[42%] left-[1%]">Casual Jacket</span>
+              <span id="hero-tag-3" class="hero-tag bottom-[22%] right-[1%] flex items-center gap-1">
+                <svg width="7" height="12" viewBox="0 0 7 12" fill="none" class="text-gray-300 shrink-0"><path d="M3.5 1 C1 4 1 8 3.5 11" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"></path></svg>
                 Full Sleeve
               </span>
             </div>
             <div class="absolute bottom-3 left-3 right-3 bg-white rounded-full flex items-center gap-2 px-5 py-2.5 shadow-md z-10">
               <span class="text-xs font-bold text-gray-900 shrink-0">Color</span>
               <div class="flex gap-1.5 items-center">
-                <button class="w-3.5 h-3.5 rounded-full bg-blue-400 hover:scale-110 transition-transform"></button>
-                <button class="w-3.5 h-3.5 rounded-full bg-yellow-400 hover:scale-110 transition-transform"></button>
-                <button class="w-3.5 h-3.5 rounded-full bg-amber-300 hover:scale-110 transition-transform"></button>
+                <button class="color-dot color-dot-active bg-blue-400" type="button" aria-label="Blue"></button>
+                <button class="color-dot bg-yellow-400" type="button" aria-label="Yellow"></button>
+                <button class="color-dot bg-amber-300" type="button" aria-label="Amber"></button>
               </div>
               <div class="w-px h-4 bg-gray-200 mx-1 shrink-0"></div>
               <span class="text-xs font-bold text-gray-900 shrink-0">Sizes</span>
               <div class="flex gap-0.5">
-                <button class="w-6 h-6 rounded-full text-[10px] font-semibold text-gray-500 hover:bg-gray-100">S</button>
-                <button class="w-6 h-6 rounded-full text-[10px] font-semibold bg-gray-950 text-white">M</button>
-                <button class="w-6 h-6 rounded-full text-[10px] font-semibold text-gray-500 hover:bg-gray-100">L</button>
-                <button class="w-6 h-6 rounded-full text-[10px] font-semibold text-gray-500 hover:bg-gray-100">XL</button>
+                <button class="size-chip" type="button">S</button>
+                <button class="size-chip size-chip-active" type="button">M</button>
+                <button class="size-chip" type="button">L</button>
+                <button class="size-chip" type="button">XL</button>
               </div>
               <div class="w-px h-4 bg-gray-200 mx-1 shrink-0"></div>
               <a class="ml-auto text-xs font-bold text-gray-900 hover:text-yellow-500 transition-colors flex items-center gap-1 whitespace-nowrap" href="#">
@@ -150,15 +154,11 @@
             </div>
           </div>
         </div>
-
       </div>
     </section>
 
-    <!-- Products Section -->
-    <section class="border-t border-gray-100" data-purpose="products-section">
+    <section id="products" class="border-t border-gray-100" data-purpose="products-section">
       <div class="max-w-7xl mx-auto px-12 py-16 md:py-24">
-
-        <!-- Section Header -->
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div class="max-w-2xl">
             <div class="flex items-center gap-4 mb-4">
@@ -169,85 +169,346 @@
               Dive into a world of fashion innovation at Klothink. Our carefully curated collections bring together the latest trends and timeless classics, ensuring you find the perfect pieces for every occasion.
             </p>
           </div>
-          <button class="px-8 py-3.5 bg-yellow-400 text-gray-950 font-bold text-sm rounded-full hover:bg-yellow-300 transition-colors whitespace-nowrap shadow-sm">
+          <button class="px-8 py-3.5 bg-yellow-400 text-gray-950 font-bold text-sm rounded-full hover:bg-yellow-300 transition-colors whitespace-nowrap shadow-sm" type="button">
             View All Products
           </button>
         </div>
 
-        <!-- Filters -->
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-10">
-          <div class="flex gap-8 overflow-x-auto w-full md:w-auto pb-4 border-b border-gray-100 text-[13px] font-bold" data-purpose="category-tabs">
-            <button class="pb-4 text-gray-400 hover:text-gray-900 transition-colors whitespace-nowrap uppercase tracking-wide">ALL</button>
-            <button class="pb-4 text-gray-900 border-b-2 border-gray-900 whitespace-nowrap uppercase tracking-wide">MENSWEAR</button>
-            <button class="pb-4 text-gray-400 hover:text-gray-900 transition-colors whitespace-nowrap uppercase tracking-wide">WOMENSWEAR</button>
-            <button class="pb-4 text-gray-400 hover:text-gray-900 transition-colors whitespace-nowrap uppercase tracking-wide">KIDSWEAR</button>
+          <div class="flex gap-8 overflow-x-auto w-full md:w-auto pb-4 border-b border-gray-100 text-[13px] font-bold" data-category-tabs>
+            <button class="tab-button tab-active" data-category-filter="all" type="button">ALL</button>
+            <button class="tab-button" data-category-filter="menswear" type="button">MENSWEAR</button>
+            <button class="tab-button" data-category-filter="womenswear" type="button">WOMENSWEAR</button>
+            <button class="tab-button" data-category-filter="kidswear" type="button">KIDSWEAR</button>
           </div>
-          <div class="flex gap-2" data-purpose="style-tags">
-            <button class="px-6 py-2.5 bg-gray-950 text-white rounded-full text-[13px] font-bold hover:bg-black transition-colors">Casual</button>
-            <button class="px-6 py-2.5 bg-white border border-gray-200 text-gray-900 rounded-full text-[13px] font-bold hover:bg-gray-50 transition-colors">Formal</button>
-            <button class="px-6 py-2.5 bg-white border border-gray-200 text-gray-900 rounded-full text-[13px] font-bold hover:bg-gray-50 transition-colors">Party</button>
-          </div>
-        </div>
-
-        <!-- Product Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12" data-purpose="product-grid">
-          <div class="group relative">
-            <div class="bg-gray-50 rounded-2xl p-6 mb-4 aspect-square flex items-center justify-center relative overflow-hidden">
-              <img alt="Classic Denim Jeans" class="w-full h-full object-contain mix-blend-multiply transition-transform group-hover:scale-105" src="./images/418bd70b5e88f8ed3eb89cff38dd122bb42213c7.png"/>
-              <button class="absolute bottom-4 right-4 w-10 h-10 bg-yellow-400 text-gray-950 rounded-full shadow-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
-                <i class="fa-solid fa-cart-shopping text-sm"></i>
-              </button>
-            </div>
-            <h3 class="font-bold text-gray-900 text-[15px] mb-1">Classic Denim Jeans</h3>
-            <p class="text-gray-500 font-medium text-[15px]">$49.99</p>
-          </div>
-          <div class="group relative">
-            <div class="bg-gray-50 rounded-2xl p-6 mb-4 aspect-square flex items-center justify-center relative overflow-hidden">
-              <img alt="Cozy Comfort Hoodie" class="w-full h-full object-contain mix-blend-multiply transition-transform group-hover:scale-105" src="./images/00805657d8042d87cea353dab63d41823bcaef14.png"/>
-              <button class="absolute bottom-4 right-4 w-10 h-10 bg-yellow-400 text-gray-950 rounded-full shadow-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
-                <i class="fa-solid fa-cart-shopping text-sm"></i>
-              </button>
-            </div>
-            <h3 class="font-bold text-gray-900 text-[15px] mb-1">Cozy Comfort Hoodie</h3>
-            <p class="text-gray-500 font-medium text-[15px]">$39.99</p>
-          </div>
-          <div class="group relative">
-            <div class="bg-gray-50 rounded-2xl p-6 mb-4 aspect-square flex items-center justify-center relative overflow-hidden">
-              <img alt="Classic Polo Shirt" class="w-full h-full object-contain mix-blend-multiply transition-transform group-hover:scale-105" src="./images/5e9fb0271256ebe560bce144814cfd2577891eef.png"/>
-              <button class="absolute bottom-4 right-4 w-10 h-10 bg-yellow-400 text-gray-950 rounded-full shadow-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
-                <i class="fa-solid fa-cart-shopping text-sm"></i>
-              </button>
-            </div>
-            <h3 class="font-bold text-gray-900 text-[15px] mb-1">Classic Polo Shirt</h3>
-            <p class="text-gray-500 font-medium text-[15px]">$29.99</p>
-          </div>
-          <div class="group relative">
-            <div class="bg-gray-50 rounded-2xl p-6 mb-4 aspect-square flex items-center justify-center relative overflow-hidden">
-              <img alt="Chino Pants" class="w-full h-full object-contain mix-blend-multiply transition-transform group-hover:scale-105" src="./images/fd1f57061a9fd79ee3bbe72c48f1a46de34207bb.png"/>
-              <button class="absolute bottom-4 right-4 w-10 h-10 bg-yellow-400 text-gray-950 rounded-full shadow-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
-                <i class="fa-solid fa-cart-shopping text-sm"></i>
-              </button>
-            </div>
-            <h3 class="font-bold text-gray-900 text-[15px] mb-1">Chino Pants</h3>
-            <p class="text-gray-500 font-medium text-[15px]">$44.99</p>
+          <div class="flex gap-2" data-style-tags>
+            <button class="chip-button chip-active" data-style-filter="casual" type="button">Casual</button>
+            <button class="chip-button" data-style-filter="formal" type="button">Formal</button>
+            <button class="chip-button" data-style-filter="party" type="button">Party</button>
           </div>
         </div>
 
-        <!-- Pagination -->
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <article class="group product-card">
+            <div class="product-image-wrap">
+              <img alt="Classic Denim Jeans" class="product-image" src="./images/418bd70b5e88f8ed3eb89cff38dd122bb42213c7.png">
+              <button class="product-cart-button" type="button" aria-label="Add Classic Denim Jeans to cart">
+                <i class="fa-solid fa-cart-shopping text-sm"></i>
+              </button>
+            </div>
+            <h3 class="product-title">Classic Denim Jeans</h3>
+            <p class="product-price">$49.99</p>
+          </article>
+          <article class="group product-card">
+            <div class="product-image-wrap">
+              <img alt="Cozy Comfort Hoodie" class="product-image" src="./images/bd7b653987791f165cce045ab34f37a37b0b3a8d.png">
+              <button class="product-cart-button" type="button" aria-label="Add Cozy Comfort Hoodie to cart">
+                <i class="fa-solid fa-cart-shopping text-sm"></i>
+              </button>
+            </div>
+            <h3 class="product-title">Cozy Comfort Hoodie</h3>
+            <p class="product-price">$39.99</p>
+          </article>
+          <article class="group product-card">
+            <div class="product-image-wrap">
+              <img alt="Classic Polo Shirt" class="product-image" src="./images/30c9f2bd350702f764639aee18834154a078af82.png">
+              <button class="product-cart-button" type="button" aria-label="Add Classic Polo Shirt to cart">
+                <i class="fa-solid fa-cart-shopping text-sm"></i>
+              </button>
+            </div>
+            <h3 class="product-title">Classic Polo Shirt</h3>
+            <p class="product-price">$29.99</p>
+          </article>
+          <article class="group product-card">
+            <div class="product-image-wrap">
+              <img alt="Chino Pants" class="product-image" src="./images/fd1f57061a9fd79ee3bbe72c48f1a46de34207bb.png">
+              <button class="product-cart-button" type="button" aria-label="Add Chino Pants to cart">
+                <i class="fa-solid fa-cart-shopping text-sm"></i>
+              </button>
+            </div>
+            <h3 class="product-title">Chino Pants</h3>
+            <p class="product-price">$44.99</p>
+          </article>
+        </div>
+
         <div class="flex items-center justify-between">
           <div class="flex-1 max-w-sm h-1 bg-gray-200 rounded-full overflow-hidden">
-            <div class="w-1/3 h-full bg-gray-900 rounded-full"></div>
+            <div id="page-progress" class="h-full bg-gray-900 rounded-full progress-track"></div>
           </div>
           <div class="flex gap-2 pl-4">
-            <button class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-gray-50 transition-colors"><i class="fa-solid fa-chevron-left text-sm"></i></button>
-            <button class="w-10 h-10 rounded-full bg-gray-950 flex items-center justify-center text-white hover:bg-black transition-colors"><i class="fa-solid fa-chevron-right text-sm"></i></button>
+            <button id="page-prev" class="pager-arrow" type="button" aria-label="Previous products"><i class="fa-solid fa-chevron-left text-sm"></i></button>
+            <button id="page-next" class="pager-arrow pager-arrow-active" type="button" aria-label="Next products"><i class="fa-solid fa-chevron-right text-sm"></i></button>
           </div>
         </div>
-
       </div>
     </section>
 
-  </main>
+    <section id="testimonials" class="border-t border-gray-100" data-purpose="testimonials-section">
+      <div class="max-w-7xl mx-auto px-12 py-16 md:py-24">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div class="max-w-2xl">
+            <div class="flex items-center gap-4 mb-4">
+              <h2 class="text-3xl md:text-[40px] font-extrabold text-gray-900 tracking-tight">CUSTOMERS LOVE.</h2>
+              <span class="text-[10px] font-bold tracking-[0.2em] text-gray-400 uppercase">TESTIMONIALS</span>
+            </div>
+            <p class="text-sm text-gray-500 leading-relaxed">
+              At Klothink, our customers are the heartbeat of our brand. Explore the heartfelt testimonials shared by those who have experienced Klothink fashion.
+            </p>
+          </div>
+          <button class="px-8 py-3.5 bg-yellow-400 text-gray-950 font-bold text-sm rounded-full hover:bg-yellow-300 transition-colors whitespace-nowrap shadow-sm" type="button">
+            View All Testimonials
+          </button>
+        </div>
 
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <article class="bg-white border border-gray-100 rounded-2xl p-6 grid gap-5">
+            <div class="flex items-center gap-3">
+              <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200">
+                <img src="./images/1.png" alt="Sarah Thompson" class="w-full h-full object-cover">
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-900 text-sm">Sarah Thompson</h3>
+                <div class="flex gap-1 mt-1">
+                  <img src="./images/Shape.png" alt="" class="w-4 h-4">
+                  <img src="./images/Shape.png" alt="" class="w-4 h-4">
+                  <img src="./images/Shape.png" alt="" class="w-4 h-4">
+                  <img src="./images/Shape.png" alt="" class="w-4 h-4">
+                  <img src="./images/Shape.png" alt="" class="w-4 h-4">
+                </div>
+              </div>
+            </div>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              Klothink exceeded my expectations. The quality and design made me feel confident. Fast shipping too.
+            </p>
+          </article>
+
+          <article class="bg-white border border-gray-100 rounded-2xl p-6 grid gap-5">
+            <div class="flex items-center gap-3">
+              <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200">
+                <img src="./images/2.png" alt="Rajesh Patel" class="w-full h-full object-cover">
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-900 text-sm">Rajesh Patel</h3>
+                <div class="flex gap-1 mt-1">
+                  <img src="./images/Shape.png" alt="" class="w-4 h-4">
+                  <img src="./images/Shape.png" alt="" class="w-4 h-4">
+                  <img src="./images/Shape.png" alt="" class="w-4 h-4">
+                  <img src="./images/Shape.png" alt="" class="w-4 h-4">
+                  <img src="./images/Shape.png" alt="" class="w-4 h-4">
+                </div>
+              </div>
+            </div>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              Absolutely love the style and comfort. Perfect blend of fashion and functionality for everyday wear.
+            </p>
+          </article>
+
+          <article class="bg-white border border-gray-100 rounded-2xl p-6 grid gap-5">
+            <div class="flex items-center gap-3">
+              <div class="w-14 h-14 rounded-full overflow-hidden border border-gray-200">
+                <img src="./images/dd702fb9303f1f4f338ed09cb52b7c3b59b74658.png" alt="Emily Walker" class="w-full h-full object-cover">
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-900 text-sm">Emily Walker</h3>
+                <div class="flex gap-1 mt-1">
+                  <img src="./images/Shape.png" alt="" class="w-4 h-4">
+                  <img src="./images/Shape.png" alt="" class="w-4 h-4">
+                  <img src="./images/Shape.png" alt="" class="w-4 h-4">
+                  <img src="./images/Shape.png" alt="" class="w-4 h-4">
+                  <img src="./images/Shape.png" alt="" class="w-4 h-4">
+                </div>
+              </div>
+            </div>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              My daughter loves her outfit. Great fit, great fabric, and the whole shopping experience was smooth.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+    
+  </main>
+<section class="py-16 md:py-24 px-6 md:px-12 max-w-7xl mx-auto border-t border-gray-100" data-purpose="faq-section">
+<div class="max-w-3xl mb-12">
+<div class="flex items-center gap-4 mb-4">
+<h2 class="text-3xl md:text-[40px] font-medium text-headingColor tracking-tight">QUESTIONS? WE HAVE ANSWERS.</h2>
+<span class="text-[10px] font-bold tracking-[0.2em] text-gray-400 uppercase bg-white px-2">FAQ</span>
+</div>
+<p class="text-sm text-textColor leading-relaxed">
+    Ease into the world of Klothink with clarity. Our FAQs cover a spectrum of topics, ensuring you have the information you need for a seamless shopping experience.
+  </p>
+</div>
+<div class="flex gap-8 overflow-x-auto w-full pb-4 border-b border-gray-100 text-[13px] font-bold mb-10" data-purpose="faq-tabs">
+<button class="pb-4 text-headingColor border-b-2 border-headingColor whitespace-nowrap uppercase tracking-wide">ALL</button>
+<button class="pb-4 text-textColor hover:text-headingColor transition-colors whitespace-nowrap uppercase tracking-wide">ORDERING</button>
+<button class="pb-4 text-textColor hover:text-headingColor transition-colors whitespace-nowrap uppercase tracking-wide">SHIPPING</button>
+<button class="pb-4 text-textColor hover:text-headingColor transition-colors whitespace-nowrap uppercase tracking-wide">RETURNS</button>
+<button class="pb-4 text-textColor hover:text-headingColor transition-colors whitespace-nowrap uppercase tracking-wide">CUSTOMER SUPPORT</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-4">
+<div class="space-y-4">
+<div class="bg-white border border-gray-100 rounded-xl p-5 flex justify-between items-center cursor-pointer hover:bg-lightBg transition-colors">
+<span class="font-bold text-headingColor text-sm">Can I modify my order after placing it?</span>
+<i class="fa-solid fa-plus text-textColor"></i>
+</div>
+<div class="bg-white border border-gray-100 rounded-xl p-5 flex justify-between items-center cursor-pointer hover:bg-lightBg transition-colors">
+<span class="font-bold text-headingColor text-sm">How do I initiate a return?</span>
+<i class="fa-solid fa-plus text-textColor"></i>
+</div>
+<div class="bg-white border border-gray-100 rounded-xl p-5 flex justify-between items-center cursor-pointer hover:bg-lightBg transition-colors">
+<span class="font-bold text-headingColor text-sm">How can I unsubscribe from the newsletter?</span>
+<i class="fa-solid fa-plus text-textColor"></i>
+</div>
+<div class="bg-white border border-gray-100 rounded-xl p-5 flex justify-between items-center cursor-pointer hover:bg-lightBg transition-colors">
+<span class="font-bold text-headingColor text-sm">Do you offer exchanges for products?</span>
+<i class="fa-solid fa-plus text-textColor"></i>
+</div>
+</div>
+<div class="space-y-4">
+<div class="bg-white border border-gray-100 rounded-xl p-6">
+<div class="flex justify-between items-start mb-4">
+<span class="font-bold text-headingColor text-[15px] pr-8">How can I place an order on Klothink?</span>
+<i class="fa-solid fa-xmark text-textColor cursor-pointer"></i>
+</div>
+<p class="text-xs text-textColor leading-relaxed">Ordering is easy! Simply browse our website, add items to your cart, and proceed to checkout. Follow the prompts to enter your details and complete your purchase.</p>
+</div>
+<div class="bg-white border border-gray-100 rounded-xl p-5 flex justify-between items-center cursor-pointer hover:bg-lightBg transition-colors">
+<span class="font-bold text-headingColor text-sm">What payment methods do you accept?</span>
+<i class="fa-solid fa-plus text-textColor"></i>
+</div>
+<div class="bg-white border border-gray-100 rounded-xl p-5 flex justify-between items-center cursor-pointer hover:bg-lightBg transition-colors">
+<span class="font-bold text-headingColor text-sm">How can I track my order?</span>
+<i class="fa-solid fa-plus text-textColor"></i>
+</div>
+<div class="bg-white border border-gray-100 rounded-xl p-5 flex justify-between items-center cursor-pointer hover:bg-lightBg transition-colors">
+<span class="font-bold text-headingColor text-sm">What is your shipping policy?</span>
+<i class="fa-solid fa-plus text-textColor"></i>
+</div>
+</div>
+<div class="space-y-4 md:col-span-2 lg:col-span-1 lg:col-start-3">
+<div class="bg-white border border-gray-100 rounded-xl p-5 flex justify-between items-center cursor-pointer hover:bg-lightBg transition-colors">
+<span class="font-bold text-headingColor text-sm pr-8">Are there any additional fees for returns?</span>
+<i class="fa-solid fa-plus text-textColor"></i>
+</div>
+<div class="bg-white border border-gray-100 rounded-xl p-5 flex justify-between items-center cursor-pointer hover:bg-lightBg transition-colors">
+<span class="font-bold text-headingColor text-sm">How do I create an account on Klothink?</span>
+<i class="fa-solid fa-plus text-textColor"></i>
+</div>
+<div class="bg-white border border-gray-100 rounded-xl p-5 flex justify-between items-center cursor-pointer hover:bg-lightBg transition-colors">
+<span class="font-bold text-headingColor text-sm">Can I change my account information?</span>
+<i class="fa-solid fa-plus text-textColor"></i>
+</div>
+<div class="bg-white border border-gray-100 rounded-xl p-5 flex justify-between items-center cursor-pointer hover:bg-lightBg transition-colors">
+<span class="font-bold text-headingColor text-sm">Are my personal details secure on Klothink?</span>
+<i class="fa-solid fa-plus text-textColor"></i>
+</div>
+</div>
+</div>
+</section>
+<!-- кон Questions FAQ -->
+
+
+<!-- нач Seamless Experience -->
+<section class="py-16 md:py-24 px-6 md:px-12 max-w-7xl mx-auto border-t border-gray-100" data-purpose="how-it-works-section">
+<div class="max-w-4xl mb-12">
+<div class="flex items-center gap-4 mb-4">
+<h2 class="text-3xl md:text-[40px] font-medium text-headingColor tracking-tight">SEAMLESS EXPERIENCE.</h2>
+<span class="text-[10px] font-bold tracking-[0.2em] text-gray-400 uppercase bg-white px-2">HOW IT WORKS ?</span>
+</div>
+<p class="text-sm text-textColor leading-relaxed">
+    At Klothink, we've designed a straightforward shopping experience to make fashion accessible. Explore the journey from discovering the latest trends to receiving your handpicked styles with ease.
+  </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-white p-8 rounded-2xl border border-gray-100">
+<h3 class="text-[56px] font-bold text-headingColor mb-4 leading-none opacity-20">01</h3>
+<h4 class="font-bold text-headingColor text-lg mb-2">Discover Trends</h4>
+<p class="text-xs text-textColor leading-relaxed">Explore our curated collection of over 1000 styles</p>
+</div>
+<div class="bg-white p-8 rounded-2xl border border-gray-100">
+<h3 class="text-[56px] font-bold text-headingColor mb-4 leading-none opacity-20">02</h3>
+<h4 class="font-bold text-headingColor text-lg mb-2">Secure Checkout</h4>
+<p class="text-xs text-textColor leading-relaxed">Add your items to the cart and proceed to our secure checkout.</p>
+</div>
+<div class="bg-white p-8 rounded-2xl border border-gray-100">
+<h3 class="text-[56px] font-bold text-headingColor mb-4 leading-none opacity-20">03</h3>
+<h4 class="font-bold text-headingColor text-lg mb-2">Swift Dispatch</h4>
+<p class="text-xs text-textColor leading-relaxed">Experience 95% same-day dispatch on orders.</p>
+</div>
+<div class="bg-white p-8 rounded-2xl border border-gray-100">
+<h3 class="text-[56px] font-bold text-headingColor mb-4 leading-none opacity-20">04</h3>
+<h4 class="font-bold text-headingColor text-lg mb-2">Unbox Happiness</h4>
+<p class="text-xs text-textColor leading-relaxed">Receive your carefully packaged Klothink order.</p>
+</div>
+</div>
+</section>
+<!-- кон Seamless Experience -->
+<!-- нач Footer -->
+<footer class="bg-white pt-20 pb-8 px-6 md:px-12 border-t border-gray-100" data-purpose="site-footer">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 mb-20">
+
+<div class="lg:col-span-2 space-y-8">
+<a class="flex items-center gap-2" href="#">
+<img alt="Klothink Logo" class="h-12 w-auto" src="./images/Group.png"/>
+</a>
+<form class="flex gap-2 max-w-sm w-full" data-purpose="newsletter-form">
+<input class="flex-1 bg-white border border-gray-200 rounded-full px-5 py-3.5 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary placeholder-gray-400" placeholder="Enter Your Email" required="" type="email"/>
+<button class="px-8 py-3.5 bg-primary text-secondary font-bold rounded-full text-sm hover:bg-yellow-400 transition-colors shadow-sm" type="submit">Subscribe</button>
+</form>
+</div>
+
+<div>
+<h4 class="font-bold text-headingColor mb-6 text-lg">Home</h4>
+<ul class="space-y-4 text-sm text-textColor">
+<li><a class="hover:text-primary transition-colors" href="#">Features</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Popular Products</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Testimonials</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">FAQ</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-headingColor mb-6 text-lg">Menswear</h4>
+<ul class="space-y-4 text-sm text-textColor">
+<li><a class="hover:text-primary transition-colors" href="#">Casual</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Formal</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Party</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Business</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-headingColor mb-6 text-lg">Womenswear</h4>
+<ul class="space-y-4 text-sm text-textColor">
+<li><a class="hover:text-primary transition-colors" href="#">Casual</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Formal</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Party</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Business</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-headingColor mb-6 text-lg">Kidswear</h4>
+<ul class="space-y-4 text-sm text-textColor">
+<li><a class="hover:text-primary transition-colors" href="#">Casual</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Formal</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Party</a></li>
+</ul>
+</div>
+</div>
+
+<div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-gray-100 text-[11px] text-gray-500 font-medium">
+<div class="flex gap-4 items-center">
+<a class="hover:text-headingColor transition-colors" href="#">Terms &amp; Conditions</a>
+<span class="w-px h-3 bg-gray-300"></span>
+<a class="hover:text-headingColor transition-colors" href="#">Privacy Policy</a>
+</div>
+<div class="flex gap-4 text-lg">
+<a class="text-secondary hover:text-primary transition-colors" href="#"><i class="fa-brands fa-facebook"></i></a>
+<a class="text-secondary hover:text-primary transition-colors" href="#"><i class="fa-brands fa-twitter"></i></a>
+<a class="text-secondary hover:text-primary transition-colors" href="#"><i class="fa-brands fa-linkedin"></i></a>
+</div>
+<p>© 2024 Klothink. All rights reserved.</p>
+</div>
+</div>
+</footer>
 </body>
 </html>

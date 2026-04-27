@@ -167,3 +167,95 @@ function init() {
 }
 
 document.addEventListener("DOMContentLoaded", init);
+
+// FAQ Accordion
+document.querySelectorAll('[data-purpose="faq-section"] .rounded-xl').forEach(item => {
+  const icon = item.querySelector('i');
+  const existingAnswer = item.querySelector('p');
+
+  // Оборачиваем ответ если он уже есть в HTML
+  if (existingAnswer) {
+    existingAnswer.style.overflow = 'hidden';
+    existingAnswer.style.maxHeight = existingAnswer.scrollHeight + 'px';
+    existingAnswer.style.transition = 'max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease';
+    existingAnswer.style.opacity = '1';
+    existingAnswer.style.marginTop = '12px';
+  }
+
+  item.style.cursor = 'pointer';
+  item.style.flexDirection = 'column';
+  item.style.alignItems = 'stretch';
+  item.style.display = 'flex';
+
+  // Шапка вопроса
+  const header = document.createElement('div');
+  header.style.display = 'flex';
+  header.style.justifyContent = 'space-between';
+  header.style.alignItems = 'center';
+
+  const titleEl = item.querySelector('span, h3');
+  if (titleEl && icon) {
+    header.appendChild(titleEl);
+    header.appendChild(icon);
+    item.insertBefore(header, item.firstChild);
+  }
+
+  item.addEventListener('click', () => {
+    const isOpen = item.classList.contains('faq-open');
+
+    // Закрыть все открытые
+    document.querySelectorAll('[data-purpose="faq-section"] .rounded-xl.faq-open').forEach(openItem => {
+      openItem.classList.remove('faq-open');
+      const p = openItem.querySelector('p.faq-answer');
+      if (p) {
+        p.style.maxHeight = '0';
+        p.style.opacity = '0';
+        p.style.marginTop = '0';
+        setTimeout(() => p.remove(), 300);
+      }
+      const ic = openItem.querySelector('i');
+      if (ic) { ic.classList.remove('fa-xmark'); ic.classList.add('fa-plus'); }
+    });
+
+    if (!isOpen) {
+      item.classList.add('faq-open');
+      if (icon) { icon.classList.remove('fa-plus'); icon.classList.add('fa-xmark'); }
+
+      const answers = {
+        'Can I modify my order after placing it?': 'Yes, you can modify your order within 1 hour of placing it. Please contact our support team immediately.',
+        'How do I initiate a return?': 'Visit your order history, select the item, and click "Return". Our team will guide you through the process.',
+        'How can I unsubscribe from the newsletter?': 'Click the "Unsubscribe" link at the bottom of any newsletter email, or update your preferences in account settings.',
+        'Do you offer exchanges for products?': 'Yes! Exchanges are available within 30 days of purchase for items in original condition.',
+        'How can I place an order on Klothink?': 'Ordering is easy! Simply browse our website, add items to your cart, and proceed to checkout. Follow the prompts to enter your details and complete your purchase.',
+        'What payment methods do you accept?': 'We accept Visa, MasterCard, PayPal, Apple Pay, and Google Pay.',
+        'How can I track my order?': 'Once shipped, you\'ll receive a tracking link via email. You can also check order status in your account.',
+        'What is your shipping policy?': 'We offer free shipping on orders over $50. Standard delivery takes 3–5 business days.',
+        'Are there any additional fees for returns?': 'No, returns are completely free within the 30-day window.',
+        'How do I create an account on Klothink?': 'Click "Sign Up" in the top navigation, fill in your details, and you\'re all set!',
+        'Can I change my account information?': 'Yes, go to Account Settings to update your name, email, address, or password anytime.',
+        'Are my personal details secure on Klothink?': 'Absolutely. We use industry-standard SSL encryption and never share your data with third parties.',
+      };
+
+      const title = titleEl ? titleEl.textContent.trim() : '';
+      const answerText = answers[title] || 'Please contact our support team for more information.';
+
+      const p = document.createElement('p');
+      p.className = 'faq-answer text-xs leading-relaxed';
+      p.style.color = '#4B5563';
+      p.style.overflow = 'hidden';
+      p.style.maxHeight = '0';
+      p.style.opacity = '0';
+      p.style.marginTop = '0';
+      p.style.transition = 'max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease';
+      p.textContent = answerText;
+      item.appendChild(p);
+
+      // Запускаем анимацию в следующем кадре
+      requestAnimationFrame(() => {
+        p.style.maxHeight = p.scrollHeight + 'px';
+        p.style.opacity = '1';
+        p.style.marginTop = '12px';
+      });
+    }
+  });
+});
